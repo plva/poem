@@ -81,19 +81,23 @@ class PoemLine:
 
         while i < len(self.nextline):
             a = getch().lower()
-            while a not in 'fnpqa':
+
+            # other keys do nothing
+            # if adding another hotkey, make sure you change hotkeys string
+            hotkeys = 'fnpqa'
+            while a not in hotkeys:
                 a = getch().lower()
 
-            # get a hint (forward)
+            # go up 
             if a == 'p':
-
                 # go up one
                 return -1
 
+            # get a hint (forward)
             elif a == 'f':
                 stdout.write(self.nextline[i] + ' ')
 
-            # let me see the whole thing (next)
+            # see the whole thing (next)
             elif a == 'n':
                 out = ' '.join(self.nextline[i:])
                 stdout.write(out)
@@ -119,20 +123,24 @@ class PoemLine:
             i += 1
         
         # if code reaches here, the prompt is at the end of the current line.
-        # So, the functionality here may be a bit different than when in the middle of the line.
-        
+        # The hotkey functionality here can therefore be different
         # if f is pressed once more, don't go on to the next line
         a = getch()
         while a.lower() not in 'anq':
             a = getch()
+            
+            # go to next line
             if a == 'n':
                 return 1
+                
+            # go to beginning of line (rerun ask() )
             elif a == 'a':
                 return 0
                 
             # not really a quit here, but two q's in a row are intuitive
             elif a == 'q':
                 return 0
+
         # Have to make sure we never return NULL (can't do arithmetic with it)
         # Returning 0 just repeats the ask()
         return 0
@@ -150,6 +158,3 @@ if __name__ == "__main__":
             
     g = get_poem_line_list(filename)
     p = PoemRunner(g)
-        
-
-
