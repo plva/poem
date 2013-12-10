@@ -1,0 +1,23 @@
+A simple poem-learning tool to be used in the command line.
+
+Uses EMACS-like keybindings:
+
+	'f' : show next word
+	'n' : move down one line
+	'p' : move up one line
+	'a' : move to the beginning of the line (and clear it)
+	'q' : quit
+
+
+Run it by passing a file name that holds a poem:
+	$ ./poem_learner.py ulysses.txt
+	...
+	> python poem_learner.py my_poem
+
+
+How to use it:
+	Read the first line out loud, and try to recollect and say the second line.
+	
+If you need a hint, you can show the next word with 'f', or display the whole next line with 'n'.
+
+
